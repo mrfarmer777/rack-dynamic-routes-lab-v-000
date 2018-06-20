@@ -6,7 +6,12 @@ class Application
     if req.path.match(/items/)
       req_item=req.path.split("/items/").last
       item=@@items.find{|i| i.name=req_item}
-      resp.write item.price
+      if item==nil
+        resp.status==400
+      else
+        resp.status=200
+        resp.write item.price
+      end
     end
     resp.finish
   end
