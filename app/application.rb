@@ -1,4 +1,3 @@
-require "item"
 
 class application
   def call(env)
