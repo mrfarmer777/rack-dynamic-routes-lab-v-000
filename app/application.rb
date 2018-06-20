@@ -8,13 +8,14 @@ class Application
       item=@@items.find{|i| i.name=req_item}
       if item==nil
         resp.status==400
+        resp.write "Item not found"
       else
         resp.status=200
         resp.write item.price
       end
     else
       resp.status=404
-
+      resp.write "Route Not Found"
     end
     resp.finish
   end
