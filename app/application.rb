@@ -12,6 +12,9 @@ class Application
         resp.status=200
         resp.write item.price
       end
+    else
+      resp.status=404
+      
     end
     resp.finish
   end
