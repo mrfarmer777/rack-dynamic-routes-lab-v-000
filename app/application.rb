@@ -1,4 +1,4 @@
-require 'pry'
+
 class Application
   def call(env)
     resp=Rack::Response.new
@@ -6,7 +6,6 @@ class Application
     if req.path.match(/items/)
       req_item=req.path.split("/items/").last
       item=@@items.find{|i| i.name==req_item}
-      binding.pry
       if item==nil
         resp.status==400
         resp.write "Item not found"
