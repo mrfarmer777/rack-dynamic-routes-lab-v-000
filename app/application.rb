@@ -3,7 +3,9 @@ class application
   def call(env)
     resp=Rack::Response.new
     req=Rack:Request.new(env)
-    sel_item=req.split(/items/).last.to_s
-
+    if req.path.match(/items/)
+      sel_item=req.path.split("/items/").last
+      item=@@items.find{|i| i.name=sel_item}
+      resp.write item.name
   end
 end
